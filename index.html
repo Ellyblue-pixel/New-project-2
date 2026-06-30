@@ -1,1 +1,63 @@
 
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prosper Tech Dev</title>
+<style>
+:root{--bg:#0a0f1c;--card:#111827;--teal:#06b6d4;--text:#e5e7eb;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,system-ui;background:var(--bg);color:var(--text)}
+nav{display:flex;justify-content:space-between;padding:20px 40px;position:sticky;top:0;background:rgba(10,15,28,.7);backdrop-filter:blur(10px);z-index:10}
+nav a{color:var(--text);text-decoration:none;font-weight:600}
+.hero{height:90vh;display:grid;place-items:center;text-align:center;position:relative}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,182,212,.2),rgba(10,15,28,.9)),url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80') center/cover;filter:blur(1px) brightness(.5)}
+.hero h1{font-size:clamp(3rem,8vw,6rem);font-weight:900;z-index:2}
+.hero p{font-size:1.2rem;color:#9ca3af;z-index:2;max-width:600px;margin:16px auto}
+.teal{color:var(--teal)}
+.btn{padding:14px 28px;background:var(--teal);color:#000;border:0;border-radius:12px;font-weight:800;cursor:pointer;transition:.2s}
+.btn:hover{transform:scale(1.05);filter:brightness(1.2)}
+.features{display:grid;gap:24px;padding:100px 20px;max-width:1200px;margin:auto}
+@media(min-width:768px){.features{grid-template-columns:repeat(3,1fr)}}
+.card{height:340px;border-radius:20px;position:relative;overflow:hidden;background-size:cover;background-position:center}
+.card.overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.85) 100%);padding:24px;display:grid;align-items:end}
+.card h3{color:var(--teal);font-size:1.6rem}
+.contact{padding:100px 20px;max-width:500px;margin:auto;text-align:center}
+.contact input,.contact textarea{width:100%;padding:14px;margin:10px 0;background:#0f172a;border:1px solid #1f2937;color:#fff;border-radius:10px}
+.reveal{opacity:0;transform:translateY(60px) scale(.95);filter:blur(10px);transition:all 1s cubic-bezier(.22,1,.36,1)}
+.reveal.show{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+.card:nth-child(2){transition-delay:.15s}
+.card:nth-child(3){transition-delay:.3s}
+</style></head><body>
+
+<nav><div><b>ProsperTech</b></div><div><a href="#work">Work</a> <a href="#contact">Contact</a></div></nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div>
+    <h1><span class="teal">PROSPER</span> TECH DEV</h1>
+    <p>We build fast, modern websites and apps that scale. Lovable design, hard code.</p>
+    <button class="btn">Hire Me</button>
+  </div>
+</section>
+
+<section class="features" id="work">
+  <div class="card reveal" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80')">
+    <div class="overlay"><h3>Web Development</h3><p>React, Next.js, Node. Clean & fast.</p></div>
+  </div>
+  <div class="card reveal" style="background-image:url('https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80')">
+    <div class="overlay"><h3>Cloud & APIs</h3><p>Supabase, Stripe, AWS. Production ready.</p></div>
+  </div>
+  <div class="card reveal" style="background-image:url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80')">
+    <div class="overlay"><h3>UI/UX Design</h3><p>Lovable interfaces your users love.</p></div>
+  </div>
+</section>
+
+<section class="contact reveal" id="contact">
+  <h2>Send a Message</h2>
+  <form><input placeholder="Name"><input type="email" placeholder="Email"><textarea rows="4" placeholder="Your message"></textarea><button class="btn" type="button">Send</button></form>
+</section>
+
+<script>
+const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('show')),{threshold:.2});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body></html>
